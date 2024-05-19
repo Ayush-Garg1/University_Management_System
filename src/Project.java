@@ -106,12 +106,12 @@ public class Project extends JFrame implements ActionListener{
 
         JMenuItem updateFacultInfo = new JMenuItem("Update Faculty Details");
         updateFacultInfo.setBackground(Color.white);
-        // updateFacultInfo.addActionListener(this);
+        updateFacultInfo.addActionListener(this);
         updateInfo.add(updateFacultInfo);
 
         JMenuItem updateStudentInfo = new JMenuItem("Update Student Details");
         updateStudentInfo.setBackground(Color.white);
-        // updateStudentInfo.addActionListener(this);
+        updateStudentInfo.addActionListener(this);
         updateInfo.add(updateStudentInfo);
 
         // FEES
@@ -193,19 +193,19 @@ public class Project extends JFrame implements ActionListener{
             new TeacherLeaveDetails();
         } else if(msg.equals("Student Leave Details")){
             new StudentLeaveDetails();
-        }// else if(msg.equals("Results")){
+        // } else if(msg.equals("Results")){
 
         // } else if(msg.equals("Upload Marks")){
             
-        // } else if(msg.equals("Update Faculty Details")){
-            
-        // } else if(msg.equals("Update Student Details")){
-            
+        } else if(msg.equals("Update Faculty Details")){
+            new UpdateTeacher();
+        } else if(msg.equals("Update Student Details")){
+            new UpdateStudent();
         // } else if(msg.equals("Fee Structure")){
             
         // } else if(msg.equals("Student Fee Form")){
             
-        // }
+        }
     }
 
 

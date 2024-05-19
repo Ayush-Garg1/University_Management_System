@@ -5,40 +5,40 @@ import java.util.*;
 import javax.swing.*;
 import com.toedter.calendar.JDateChooser;;
 
-public class UpdateStudent extends JFrame implements ActionListener{
+public class UpdateTeacher extends JFrame implements ActionListener{
 
-    JTextField tfcourse, tfaddress, tfphone, tfemail, tfbranch;
-    JLabel labelrollno;
+    JTextField tfqualification, tfaddress, tfphone, tfemail, tfdept;
+    JLabel labelempid;
     JButton submit, cancel;
-    Choice crollnum;
+    Choice cempid;
 
-    UpdateStudent(){
+    UpdateTeacher(){
         setSize(900, 700);
         setLocation(350, 50);
         
         setLayout(null);
 
-        JLabel heading = new JLabel("Update Student Details");
+        JLabel heading = new JLabel("Update Faculty Details");
         heading.setBounds(50, 10, 500, 50);
         heading.setFont(new Font("Tahoma", Font.ITALIC, 30));
         add(heading);
 
-        JLabel lblRollNum = new JLabel("Select Roll Number");
-        lblRollNum.setBounds(50, 100, 200, 20);
-        lblRollNum.setFont(new Font("serif", Font.PLAIN, 20));
-        add(lblRollNum);
+        JLabel lblempid = new JLabel("Select Employee ID");
+        lblempid.setBounds(50, 100, 200, 20);
+        lblempid.setFont(new Font("serif", Font.PLAIN, 20));
+        add(lblempid);
 
-        crollnum = new Choice();
-        crollnum.setBounds(250, 100, 200, 20);
-        add(crollnum);
+        cempid = new Choice();
+        cempid.setBounds(250, 100, 200, 20);
+        add(cempid);
 
         try{
 
             Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("select * from student");
+            ResultSet rs = c.s.executeQuery("select * from teacher");
 
             while(rs.next()){
-                crollnum.add(rs.getString("rollno"));
+                cempid.add(rs.getString("empid"));
             }
 
         }catch(Exception e){
@@ -65,15 +65,15 @@ public class UpdateStudent extends JFrame implements ActionListener{
         lblFname.setFont(new Font("Tahoma", Font.PLAIN, 18));
         add(lblFname);
 
-        JLabel lblrollno = new JLabel("Roll Number");
-        lblrollno.setBounds(50, 200, 200, 30);
-        lblrollno.setFont(new Font("serif", Font.BOLD, 25));
-        add(lblrollno);
+        JLabel labelEmpId = new JLabel("Employee ID");
+        labelEmpId.setBounds(50, 200, 200, 30);
+        labelEmpId.setFont(new Font("serif", Font.BOLD, 25));
+        add(labelEmpId);
 
-        labelrollno = new JLabel();
-        labelrollno.setBounds(250, 200, 200, 30);
-        labelrollno.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        add(labelrollno);
+        labelempid = new JLabel();
+        labelempid.setBounds(250, 200, 200, 30);
+        labelempid.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        add(labelempid);
 
         JLabel lbldob = new JLabel("Date Of Birth");
         lbldob.setBounds(450, 200, 200, 30);
@@ -142,27 +142,27 @@ public class UpdateStudent extends JFrame implements ActionListener{
         labelAdhaar.setFont(new Font("Tahoma", Font.PLAIN, 18));
         add(labelAdhaar);
         
-        JLabel lblcourse = new JLabel("Course");
-        lblcourse.setBounds(50, 400, 250, 30);
-        lblcourse.setFont(new Font("serif", Font.BOLD, 25));
-        add(lblcourse);
+        JLabel lblqualification = new JLabel("Qualification");
+        lblqualification.setBounds(50, 400, 250, 30);
+        lblqualification.setFont(new Font("serif", Font.BOLD, 25));
+        add(lblqualification);
 
-        tfcourse = new JTextField();
-        tfcourse.setBounds(250, 400, 150, 30);
-        add(tfcourse);
+        tfqualification = new JTextField();
+        tfqualification.setBounds(250, 400, 150, 30);
+        add(tfqualification);
 
-        JLabel lblbranch = new JLabel("Branch");
-        lblbranch.setBounds(450, 400, 250, 30);
-        lblbranch.setFont(new Font("serif", Font.BOLD, 25));
-        add(lblbranch);
+        JLabel lbldept = new JLabel("Department");
+        lbldept.setBounds(450, 400, 250, 30);
+        lbldept.setFont(new Font("serif", Font.BOLD, 25));
+        add(lbldept);
 
-        tfbranch = new JTextField();
-        tfbranch.setBounds(650, 400, 150, 30);
-        add(tfbranch);
+        tfdept = new JTextField();
+        tfdept.setBounds(650, 400, 150, 30);
+        add(tfdept);
 
         try{
             Conn c = new Conn();
-            String query = "select * from student where rollno=\'"+crollnum.getSelectedItem()+"\'";
+            String query = "select * from teacher where empid=\'"+cempid.getSelectedItem()+"\'";
             ResultSet rs = c.s.executeQuery(query);
             while(rs.next()){
                 labelName.setText(rs.getString("name"));
@@ -174,19 +174,19 @@ public class UpdateStudent extends JFrame implements ActionListener{
                 labelx.setText(rs.getString("class_x"));
                 lblxii.setText(rs.getString("class_xii"));
                 labelAdhaar.setText(rs.getString("adhaar"));
-                labelrollno.setText(rs.getString("rollno"));
-                tfcourse.setText(rs.getString("course"));
-                tfbranch.setText(rs.getString("branch"));
+                labelempid.setText(rs.getString("empid"));
+                tfqualification.setText(rs.getString("qualification"));
+                tfdept.setText(rs.getString("department"));
             }
         }catch(Exception e){
             e.printStackTrace();
         }
 
-        crollnum.addItemListener(new ItemListener() {
+        cempid.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent ie){
                 try{
                     Conn c = new Conn();
-                    String query = "select * from student where rollno=\'"+crollnum.getSelectedItem()+"\'";
+                    String query = "select * from teacher where empid=\'"+cempid.getSelectedItem()+"\'";
                     ResultSet rs = c.s.executeQuery(query);
                     while(rs.next()){
                         labelName.setText(rs.getString("name"));
@@ -198,9 +198,9 @@ public class UpdateStudent extends JFrame implements ActionListener{
                         labelx.setText(rs.getString("class_x"));
                         lblxii.setText(rs.getString("class_xii"));
                         labelAdhaar.setText(rs.getString("adhaar"));
-                        labelrollno.setText(rs.getString("rollno"));
-                        tfcourse.setText(rs.getString("course"));
-                        tfbranch.setText(rs.getString("branch"));
+                        labelempid.setText(rs.getString("rollno"));
+                        tfqualification.setText(rs.getString("qualification"));
+                        tfdept.setText(rs.getString("department"));
                     }
                 }catch(Exception e){
                     e.printStackTrace();
@@ -231,21 +231,21 @@ public class UpdateStudent extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == submit){
-            String rollno = labelrollno.getText();
+            String empid = labelempid.getText();
             String address = tfaddress.getText();
             String phone = tfphone.getText();
             String email = tfemail.getText();
-            String course = tfcourse.getText();
-            String branch = tfbranch.getText();
+            String qualification = tfqualification.getText();
+            String dept = tfdept.getText();
 
 
             try{
-                String query = "update student set address=\'" + address + "\', phone=\'" + phone + "\', email=\'" + email + "\', course=\'" + course + "\', branch=\'" + branch + "\' where rollno=\'"+rollno+"\'";
+                String query = "update teacher set address=\'" + address + "\', phone=\'" + phone + "\', email=\'" + email + "\', qualification=\'" + qualification + "\', department=\'" + dept + "\' where empid=\'"+empid+"\'";
 
                 Conn c = new Conn();
                 c.s.executeUpdate(query);
 
-                JOptionPane.showMessageDialog(null,"Student Datials Updated Successfully");
+                JOptionPane.showMessageDialog(null,"Faculty Datials Updated Successfully");
                 setVisible(false);
 
             }catch(Exception e){
@@ -260,6 +260,6 @@ public class UpdateStudent extends JFrame implements ActionListener{
 
 
     public static void main(String[] args){
-        new UpdateStudent();
+        new UpdateTeacher();
     }
 }
