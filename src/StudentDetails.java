@@ -40,19 +40,19 @@ public class StudentDetails extends JFrame implements ActionListener{
         }
 
         table = new JTable();
-
-        JScrollPane jsp = new JScrollPane(table);
-        jsp.setBounds(0, 100, 900, 600);
-        add(jsp);
-
+        
         try{
             Conn c = new Conn();
             ResultSet rs = c.s.executeQuery("select * from student");
-
+            
             table.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
             e.printStackTrace();
         }
+        
+        JScrollPane jsp = new JScrollPane(table);
+        jsp.setBounds(0, 100, 900, 600);
+        add(jsp);
 
         search = new JButton("Search");
         search.setBounds(20, 70, 80, 20);

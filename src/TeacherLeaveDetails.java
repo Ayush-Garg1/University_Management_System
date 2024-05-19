@@ -7,32 +7,32 @@ import net.proteanit.sql.DbUtils;
 
 import javax.swing.*;
 
-public class StudentLeaveDetails extends JFrame implements ActionListener{
+public class TeacherLeaveDetails extends JFrame implements ActionListener{
 
-    Choice crollno;
+    Choice cempid;
     JTable table;
     JButton search, print, cancel;
 
-    StudentLeaveDetails(){
+    TeacherLeaveDetails(){
         
         getContentPane().setBackground(Color.white);
         setLayout(null);
 
-        JLabel heading = new JLabel("Search by Roll Number");
+        JLabel heading = new JLabel("Search by Employee ID");
         heading.setBounds(20, 20, 150, 20);
         add(heading);
 
-        crollno = new Choice();
-        crollno.setBounds(180, 20, 150, 20);
-        add(crollno);
+        cempid = new Choice();
+        cempid.setBounds(180, 20, 150, 20);
+        add(cempid);
 
         try{
 
             Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("select * from student");
+            ResultSet rs = c.s.executeQuery("select * from teacher");
 
             while(rs.next()){
-                crollno.add(rs.getString("rollno"));
+                cempid.add(rs.getString("empid"));
             }
 
         }catch(Exception e){
@@ -43,7 +43,7 @@ public class StudentLeaveDetails extends JFrame implements ActionListener{
         
         try{
             Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("select * from studentleave");
+            ResultSet rs = c.s.executeQuery("select * from teacherleave");
             
             table.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -77,7 +77,7 @@ public class StudentLeaveDetails extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == search){
-            String query = "select * from studentleave where rollno = " + crollno.getSelectedItem();
+            String query = "select * from teacherleave where rollno = " + cempid.getSelectedItem();
             try{
                 Conn c = new Conn();
                 ResultSet rs = c.s.executeQuery(query);
@@ -97,6 +97,6 @@ public class StudentLeaveDetails extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args){
-        new StudentLeaveDetails();
+        new TeacherLeaveDetails();
     }
 }

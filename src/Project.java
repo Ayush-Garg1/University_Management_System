@@ -73,10 +73,12 @@ public class Project extends JFrame implements ActionListener{
 
         JMenuItem faculyLeaveDetail = new JMenuItem("Faculty Leave Details");
         faculyLeaveDetail.setBackground(Color.white);
+        faculyLeaveDetail.addActionListener(this);
         leaveDetails.add(faculyLeaveDetail);
 
         JMenuItem studentLeaveDetail = new JMenuItem("Student Leave Details");
         studentLeaveDetail.setBackground(Color.white);
+        studentLeaveDetail.addActionListener(this);
         leaveDetails.add(studentLeaveDetail);
 
         // EXAMS
@@ -87,10 +89,12 @@ public class Project extends JFrame implements ActionListener{
 
         JMenuItem results = new JMenuItem("Results");
         results.setBackground(Color.white);
+        // results.addActionListener(this);
         exam.add(results);
 
         JMenuItem uploadMarks = new JMenuItem("Upload Marks");
         uploadMarks.setBackground(Color.white);
+        // uploadMarks.addActionListener(this);
         exam.add(uploadMarks);
 
 
@@ -102,11 +106,13 @@ public class Project extends JFrame implements ActionListener{
 
         JMenuItem updateFacultInfo = new JMenuItem("Update Faculty Details");
         updateFacultInfo.setBackground(Color.white);
+        // updateFacultInfo.addActionListener(this);
         updateInfo.add(updateFacultInfo);
 
-        JMenuItem uploadStudentInfo = new JMenuItem("Update Student Details");
-        uploadStudentInfo.setBackground(Color.white);
-        updateInfo.add(uploadStudentInfo);
+        JMenuItem updateStudentInfo = new JMenuItem("Update Student Details");
+        updateStudentInfo.setBackground(Color.white);
+        // updateStudentInfo.addActionListener(this);
+        updateInfo.add(updateStudentInfo);
 
         // FEES
         JMenu fee = new JMenu("Fee Details");
@@ -116,10 +122,12 @@ public class Project extends JFrame implements ActionListener{
 
         JMenuItem feeStructure = new JMenuItem("Fee Structure");
         feeStructure.setBackground(Color.white);
+        // feeStructure.addActionListener(this);
         fee.add(feeStructure);
 
         JMenuItem feeForm = new JMenuItem("Student Fee Form");
         feeForm.setBackground(Color.white);
+        // feeForm.addActionListener(this);
         fee.add(feeForm);
 
         // UTILITY
@@ -181,7 +189,23 @@ public class Project extends JFrame implements ActionListener{
             new TeacherLeave();
         } else if(msg.equals("Student Leave")){
             new StudentLeave();
-        } 
+        } else if(msg.equals("Faculty Leave Details")){
+            new TeacherLeaveDetails();
+        } else if(msg.equals("Student Leave Details")){
+            new StudentLeaveDetails();
+        }// else if(msg.equals("Results")){
+
+        // } else if(msg.equals("Upload Marks")){
+            
+        // } else if(msg.equals("Update Faculty Details")){
+            
+        // } else if(msg.equals("Update Student Details")){
+            
+        // } else if(msg.equals("Fee Structure")){
+            
+        // } else if(msg.equals("Student Fee Form")){
+            
+        // }
     }
 
 
