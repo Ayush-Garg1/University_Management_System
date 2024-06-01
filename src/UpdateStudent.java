@@ -1,9 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.ResultSet;
-import java.util.*;
 import javax.swing.*;
-import com.toedter.calendar.JDateChooser;;
 
 public class UpdateStudent extends JFrame implements ActionListener{
 

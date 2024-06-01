@@ -94,7 +94,7 @@ public class Project extends JFrame implements ActionListener{
 
         JMenuItem uploadMarks = new JMenuItem("Upload Marks");
         uploadMarks.setBackground(Color.white);
-        // uploadMarks.addActionListener(this);
+        uploadMarks.addActionListener(this);
         exam.add(uploadMarks);
 
 
@@ -195,8 +195,8 @@ public class Project extends JFrame implements ActionListener{
             new StudentLeaveDetails();
         // } else if(msg.equals("Results")){
 
-        // } else if(msg.equals("Upload Marks")){
-            
+        } else if(msg.equals("Upload Marks")){
+            new EnterMarks();
         } else if(msg.equals("Update Faculty Details")){
             new UpdateTeacher();
         } else if(msg.equals("Update Student Details")){

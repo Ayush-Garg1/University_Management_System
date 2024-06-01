@@ -122,7 +122,7 @@ public class AddTeacher extends JFrame implements ActionListener{
         lblqual.setFont(new Font("serif", Font.BOLD, 25));
         add(lblqual);
 
-        String[] course = {"", "B.Tech", "BCA", "MCA", "BBA", "MBA", "BSc", "MSc", "BA"};
+        String[] course = {"","Phd", "M.Tech", "B.Tech", "MCA", "BCA", "MBA", "BBA", "MSc", "BSc", "MA", "BA"};
         cbqual = new JComboBox(course);
         cbqual.setBounds(250, 400, 150, 30);
         add(cbqual);
