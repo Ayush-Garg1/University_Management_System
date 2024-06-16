@@ -137,25 +137,26 @@ public class AddTeacher extends JFrame implements ActionListener{
         cbdept.setBounds(650, 400, 150, 30);
         add(cbdept);
 
-         // SUBMIT BUTTON
-         submit = new JButton("SUBMIT");
-         submit.setBounds(250, 500, 150, 30);
-         submit.setBackground(Color.black);
-         submit.setForeground(Color.white);
-         submit.addActionListener(this);
-         submit.setFont(new Font("Tahoma", Font.BOLD, 16));
-         add(submit);
- 
-         // CANCEL BUTTON
-         cancel = new JButton("CANCEL");
-         cancel.setBounds(450, 500, 150, 30);
-         cancel.setBackground(Color.black);
-         cancel.setForeground(Color.white);
-         cancel.addActionListener(this);
-         cancel.setFont(new Font("Tahoma", Font.BOLD, 16));
-         add(cancel);
+        // SUBMIT BUTTON
+        submit = new JButton("SUBMIT");
+        submit.setBounds(250, 500, 150, 30);
+        submit.setBackground(Color.black);
+        submit.setForeground(Color.white);
+        submit.addActionListener(this);
+        submit.setFont(new Font("Tahoma", Font.BOLD, 16));
+        add(submit);
+
+        // CANCEL BUTTON
+        cancel = new JButton("CANCEL");
+        cancel.setBounds(450, 500, 150, 30);
+        cancel.setBackground(Color.black);
+        cancel.setForeground(Color.white);
+        cancel.addActionListener(this);
+        cancel.setFont(new Font("Tahoma", Font.BOLD, 16));
+        add(cancel);
         
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void actionPerformed(ActionEvent ae){
@@ -191,6 +192,7 @@ public class AddTeacher extends JFrame implements ActionListener{
 
         }else if(ae.getSource() == cancel){
             setVisible(false);
+            // System.exit(0);
         }
     }
 

@@ -73,6 +73,7 @@ public class TeacherLeaveDetails extends JFrame implements ActionListener{
         setLocation(300, 100);
         
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     public void actionPerformed(ActionEvent ae){
@@ -93,6 +94,7 @@ public class TeacherLeaveDetails extends JFrame implements ActionListener{
             }
         }else{
             setVisible(false);
+            // System.exit(0);
         }
     }
 

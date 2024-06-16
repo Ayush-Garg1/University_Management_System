@@ -7,7 +7,7 @@ public class Project extends JFrame implements ActionListener{
     Project(){
         setSize(1540, 900);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/third.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/first__.png"));
         Image i2 = i1.getImage().getScaledInstance(1500, 800, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
@@ -89,7 +89,7 @@ public class Project extends JFrame implements ActionListener{
 
         JMenuItem results = new JMenuItem("Results");
         results.setBackground(Color.white);
-        // results.addActionListener(this);
+        results.addActionListener(this);
         exam.add(results);
 
         JMenuItem uploadMarks = new JMenuItem("Upload Marks");
@@ -122,12 +122,12 @@ public class Project extends JFrame implements ActionListener{
 
         JMenuItem feeStructure = new JMenuItem("Fee Structure");
         feeStructure.setBackground(Color.white);
-        // feeStructure.addActionListener(this);
+        feeStructure.addActionListener(this);
         fee.add(feeStructure);
 
         JMenuItem feeForm = new JMenuItem("Student Fee Form");
         feeForm.setBackground(Color.white);
-        // feeForm.addActionListener(this);
+        feeForm.addActionListener(this);
         fee.add(feeForm);
 
         // UTILITY
@@ -146,6 +146,14 @@ public class Project extends JFrame implements ActionListener{
         calc.addActionListener(this);
         utility.add(calc);
 
+        JMenu about = new JMenu("About");
+        about.setForeground(Color.BLUE);
+        mb.add(about);
+
+        JMenuItem ab = new JMenuItem("About");
+        ab.addActionListener(this);
+        about.add(ab);
+
         // EXIT
         JMenu exit = new JMenu("Exit");
         exit.setForeground(Color.BLUE);
@@ -159,23 +167,27 @@ public class Project extends JFrame implements ActionListener{
 
         
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void actionPerformed(ActionEvent ae){
         String msg = ae.getActionCommand();
         if(msg.equals("Exit")){
             setVisible(false);
+            System.exit(0);
         }else if(msg.equals("Calculator")){
             try{
                 String[] str = {"calc.exe"};
                 Runtime.getRuntime().exec(str);
             }catch(Exception e){
+                e.printStackTrace();
             }
         }else if(msg.equals("Notepad")){
             try{
                 String[] str = {"notepad.exe"};
                 Runtime.getRuntime().exec(str);
             }catch(Exception e){
+                e.printStackTrace();
             }
         } else if(msg.equals("New Faculty Information")){
             new AddTeacher();
@@ -193,18 +205,20 @@ public class Project extends JFrame implements ActionListener{
             new TeacherLeaveDetails();
         } else if(msg.equals("Student Leave Details")){
             new StudentLeaveDetails();
-        // } else if(msg.equals("Results")){
-
+        } else if(msg.equals("Results")){
+            new Results();
         } else if(msg.equals("Upload Marks")){
             new EnterMarks();
         } else if(msg.equals("Update Faculty Details")){
             new UpdateTeacher();
         } else if(msg.equals("Update Student Details")){
             new UpdateStudent();
-        // } else if(msg.equals("Fee Structure")){
-            
-        // } else if(msg.equals("Student Fee Form")){
-            
+        } else if(msg.equals("Fee Structure")){
+            new FeeStructure();
+        } else if(msg.equals("Student Fee Form")){
+            new StudentFeeForm();
+        } else if(msg.equals("About")){
+            new About();
         }
     }
 

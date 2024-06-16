@@ -128,6 +128,7 @@ public class EnterMarks extends JFrame implements ActionListener{
         add(cancel);
 
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void actionPerformed(ActionEvent ae){
@@ -148,6 +149,7 @@ public class EnterMarks extends JFrame implements ActionListener{
             }
         }else if(ae.getSource() == cancel){
             setVisible(false);
+            // System.exit(0);
         }
     }
     public static void main(String[] args){

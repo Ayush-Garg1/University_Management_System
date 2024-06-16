@@ -60,6 +60,7 @@ public class Login extends JFrame implements ActionListener{
         setSize(600, 300);
         setLocation(500, 250);
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 
@@ -78,8 +79,9 @@ public class Login extends JFrame implements ActionListener{
                     setVisible(false);
                     new Project();
                 }else{
-                    JOptionPane.showMessageDialog(null, "Invalid username or password");
+                    JOptionPane.showMessageDialog(null, "😡Invalid username or password");
                     setVisible(false);
+                    System.exit(0);
                 }
                 c.s.close();
             }catch(Exception e){
@@ -88,6 +90,7 @@ public class Login extends JFrame implements ActionListener{
 
         }else if(ae.getSource() == cancel){
             setVisible(false);
+            System.exit(0);
         }
     }
 
